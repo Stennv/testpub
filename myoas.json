@@ -1,0 +1,446 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sample api",
+        "version": "1.0",
+        "summary": "Collection of sample APIs",
+        "description": "Here I ll list various free APIs available "
+    },
+    "servers": [
+        {
+            "url": "https://api.agify.io",
+            "description": "Prediction"
+        },
+        {
+            "url": "https://api.coingecko.com",
+            "description": "Exchange"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "PredictAge",
+                "summary": "GET Age based on a Name",
+                "description": "Predict Age based on a Name.",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "name",
+                        "description": "Enter a name Eg: bella"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "header",
+                        "name": "SampleHeader"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "cookie",
+                        "name": "SampleCookieParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/testresponse"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKey": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "description": "",
+                                "minItems": 1,
+                                "uniqueItems": true,
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "username",
+                                        "firstName",
+                                        "lastName",
+                                        "email",
+                                        "password",
+                                        "phone",
+                                        "userStatus"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "username": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        },
+                                        "firstName": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        },
+                                        "lastName": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        },
+                                        "userStatus": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "x-examples": {
+                                    "example-1": [
+                                        {
+                                            "id": 0,
+                                            "username": "string",
+                                            "firstName": "string",
+                                            "lastName": "string",
+                                            "email": "string",
+                                            "password": "string",
+                                            "phone": "string",
+                                            "userStatus": 0
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "description": "Sample body"
+                }
+            },
+            "parameters": []
+        },
+        "/samplePost/{PathParam}": {
+            "post": {
+                "summary": "POST operation",
+                "operationId": "post-samplePost",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "",
+                                    "type": "object",
+                                    "properties": {
+                                        "response": {
+                                            "type": "object",
+                                            "properties": {
+                                                "result": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "result"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "response"
+                                    ],
+                                    "x-examples": {
+                                        "example-1": {
+                                            "response": {
+                                                "result": ""
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "501": {
+                        "description": "Not Implemented"
+                    }
+                },
+                "description": "This endpoint is not accessible. ",
+                "security": [
+                    {
+                        "OAuth2.0": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "header",
+                        "name": "PostHeader"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "PostQueryParam"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "cookie",
+                        "name": "PostCookieParam"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "",
+                                "type": "object",
+                                "properties": {
+                                    "Post": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Age": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "Name",
+                                            "Age"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "Post"
+                                ],
+                                "x-examples": {
+                                    "example-1": {
+                                        "Post": {
+                                            "Name": "",
+                                            "Age": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "description": "Request body"
+                }
+            },
+            "parameters": [
+                {
+                    "schema": {
+                        "type": "string"
+                    },
+                    "name": "PathParam",
+                    "in": "path",
+                    "required": true,
+                    "description": "Sample path parameter"
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "PredictResponse": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "age": {
+                        "type": "number"
+                    },
+                    "count": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "name",
+                    "age",
+                    "count"
+                ],
+                "x-examples": {
+                    "example-1": {
+                        "name": "bella",
+                        "age": 34,
+                        "count": 40138
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "APIKey": {
+                "name": "APIKey",
+                "type": "apiKey",
+                "in": "query"
+            },
+            "OAuth2.0": {
+                "type": "oauth2",
+                "flows": {
+                    "clientCredentials": {
+                        "tokenUrl": "{token url}",
+                        "refreshUrl": "{refresh_url}",
+                        "scopes": {
+                            "scope_1": "description"
+                        }
+                    },
+                    "implicit": {
+                        "authorizationUrl": "{Auth url}",
+                        "refreshUrl": "{refresh url}",
+                        "scopes": {
+                            "scope_1": "description"
+                        }
+                    },
+                    "password": {
+                        "tokenUrl": "{token url}",
+                        "refreshUrl": "{refresh url}",
+                        "scopes": {
+                            "scope_1": ""
+                        }
+                    },
+                    "authorizationCode": {
+                        "authorizationUrl": "{auth url}",
+                        "tokenUrl": "{token url}",
+                        "refreshUrl": "{refresh url}",
+                        "scopes": {
+                            "scope_1": ""
+                        }
+                    }
+                }
+            }
+        },
+        "responses": {
+            "testresponse": {
+                "description": "Example response",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "description": "",
+                            "type": "object",
+                            "x-examples": {
+                                "example-1": {
+                                    "Myname": "bella",
+                                    "Myage": 34,
+                                    "Mycount": 40138
+                                }
+                            },
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "Myage": {
+                                    "type": "number"
+                                },
+                                "Mycount": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "examples": {
+                            "example-1": {
+                                "value": {
+                                    "id": "string"
+                                }
+                            }
+                        }
+                    },
+                    "application/xml": {
+                        "schema": {
+                            "description": "",
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "age": {
+                                    "type": "number"
+                                },
+                                "count": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "name",
+                                "age",
+                                "count"
+                            ],
+                            "x-examples": {
+                                "example-1": {
+                                    "name": "bella",
+                                    "age": 34,
+                                    "count": 40138
+                                }
+                            }
+                        },
+                        "examples": {
+                            "example-1": {
+                                "value": {
+                                    "name": "string",
+                                    "age": 0,
+                                    "count": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "name": {
+                "name": "name",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                },
+                "description": "Enter name to find out your age"
+            }
+        }
+    },
+    "security": [
+        {
+            "OAuth2.0": [
+                "scope_1"
+            ]
+        }
+    ]
+}
